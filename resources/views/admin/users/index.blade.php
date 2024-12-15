@@ -39,7 +39,7 @@
                                             <th>NIM</th>
                                             <th>Nama</th>
                                             <th>Semester</th>
-                                            <th>Actions</th>
+                                            {{-- <th>Actions</th> --}}
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -49,7 +49,7 @@
                                                 <td>{{ $student->nim }}</td>
                                                 <td>{{ $student->name }}</td>
                                                 <td>{{ $student->semester }}</td>
-                                                <td>
+                                                {{-- <td>
                                                     <!-- Edit Badge -->
                                                     <a href="{{ route('admin.users.edit', $student) }}"
                                                         class="badge bg-warning text-dark">
@@ -95,7 +95,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </td>
+                                                </td> --}}
                                             </tr>
                                         @endforeach
                                     </tbody>

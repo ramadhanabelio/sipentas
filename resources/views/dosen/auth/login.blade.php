@@ -49,7 +49,7 @@
                                         novalidate method="POST">
                                         @csrf
                                         <div class="col-12">
-                                            <label for="yourEmail" class="form-label">Email:</label>
+                                            <label for="yourEmail" class="form-label">Email</label>
                                             <input type="email" name="email"
                                                 class="form-control @error('email') is-invalid @enderror" id="yourEmail"
                                                 required value="{{ old('email') }}">
@@ -58,7 +58,7 @@
                                             @enderror
                                         </div>
                                         <div class="col-12">
-                                            <label for="yourPassword" class="form-label">Password:</label>
+                                            <label for="yourPassword" class="form-label">Password</label>
                                             <input type="password" name="password"
                                                 class="form-control @error('password') is-invalid @enderror"
                                                 id="yourPassword" required>

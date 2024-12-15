@@ -42,14 +42,14 @@
                                             <img src="{{ asset('assets/img/logo.png') }}" alt="Logo POLBENG"
                                                 class="text-center" width="100px" />
                                         </div>
-                                        <h5 class="card-title text-center pb-0 fs-4">SIPENTAS</h5>
+                                        <h5 class="card-title text-center pb-0 fs-4">Admin : SIPENTAS</h5>
                                         <p class="text-center small">Sistem Informasi Peminjaman Fasilitas</p>
                                     </div>
                                     <form action="{{ route('admin.login') }}" class="row g-3 needs-validation"
                                         novalidate method="POST">
                                         @csrf
                                         <div class="col-12">
-                                            <label for="yourEmail" class="form-label">Email:</label>
+                                            <label for="yourEmail" class="form-label">Email</label>
                                             <input type="email" name="email"
                                                 class="form-control @error('email') is-invalid @enderror" id="yourEmail"
                                                 required value="{{ old('email') }}">
@@ -58,7 +58,7 @@
                                             @enderror
                                         </div>
                                         <div class="col-12">
-                                            <label for="yourPassword" class="form-label">Password:</label>
+                                            <label for="yourPassword" class="form-label">Password</label>
                                             <input type="password" name="password"
                                                 class="form-control @error('password') is-invalid @enderror"
                                                 id="yourPassword" required>
