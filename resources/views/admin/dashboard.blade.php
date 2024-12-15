@@ -8,7 +8,7 @@
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
-                    <a href="index.html">Home</a>
+                    <a href="{{ route('admin.dashboard') }}">Home</a>
                 </li>
                 <li class="breadcrumb-item active">Dashboard</li>
             </ol>
@@ -18,7 +18,6 @@
 
     <section class="section dashboard">
         <div class="row">
-            <!-- Left side columns -->
             <div class="col-lg-12">
                 <div class="row">
                     <!-- Laboratory Card -->
@@ -26,15 +25,14 @@
                         <div class="card info-card sales-card">
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    Laboratory
+                                    Laboratorium
                                 </h5>
-
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-grid"></i>
+                                        <i class="bi bi-grid-fill"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>145</h6>
+                                        <h6>{{ $totalLaboratory }}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -47,12 +45,11 @@
                         <div class="card info-card revenue-card">
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    Facilities
+                                    Fasilitas
                                 </h5>
-
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-gear"></i>
+                                        <i class="bi bi-gear-fill"></i>
                                     </div>
                                     <div class="ps-3">
                                         <h6>{{ $totalFacilities }}</h6>
@@ -68,12 +65,11 @@
                         <div class="card info-card customers-card">
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    Users
+                                    Pengguna
                                 </h5>
-
                                 <div class="d-flex align-items-center">
                                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                        <i class="bi bi-people"></i>
+                                        <i class="bi bi-people-fill"></i>
                                     </div>
                                     <div class="ps-3">
                                         <h6>{{ $totalUsers }}</h6>
@@ -83,9 +79,68 @@
                         </div>
                     </div>
                     <!-- End Users Card -->
+
+                    <!-- Users Card -->
+                    <div class="col-xxl-4 col-xl-12">
+                        <div class="card info-card revenue-card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    Dosen
+                                </h5>
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-person-fill-lock"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{ $totalLecturer }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Users Card -->
+
+                    <!-- Users Card -->
+                    <div class="col-xxl-4 col-xl-12">
+                        <div class="card info-card customers-card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    Staff Jurusan
+                                </h5>
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-person-fill-gear"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{ $totalStaff }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Users Card -->
+
+                    <!-- Users Card -->
+                    <div class="col-xxl-4 col-xl-12">
+                        <div class="card info-card sales-card">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    Program Studi
+                                </h5>
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-grid-1x2-fill"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{ $totalProdi }}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Users Card -->
                 </div>
             </div>
-            <!-- End Left side columns -->
         </div>
     </section>
 @endsection

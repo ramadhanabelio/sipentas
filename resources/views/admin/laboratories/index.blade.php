@@ -1,16 +1,16 @@
 @extends('layouts.admin')
 
-@section('title', 'Manajemen Fasilitas')
+@section('title', 'Manajemen Laboratorium')
 
 @section('content')
     <div class="pagetitle">
-        <h1>Manajemen Fasilitas</h1>
+        <h1>Manajemen Laboratorium</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="{{ route('admin.dashboard') }}">Home</a>
                 </li>
-                <li class="breadcrumb-item active">Manajemen Fasilitas</li>
+                <li class="breadcrumb-item active">Manajemen Laboratorium</li>
             </ol>
         </nav>
     </div>
@@ -31,8 +31,8 @@
                                     </li>
 
                                     <li>
-                                        <a class="dropdown-item" href="{{ route('admin.facilities.create') }}">+ Tambah Data
-                                            Fasilitas</a>
+                                        <a class="dropdown-item" href="{{ route('admin.laboratories.create') }}">+ Tambah
+                                            Data Lab</a>
                                     </li>
                                     {{-- <li>
                                         <a class="dropdown-item" href="#">Print PDF</a>
@@ -45,7 +45,7 @@
 
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    Manajemen Fasilitas
+                                    Manajemen Laboratorium
                                 </h5>
 
                                 <table class="table table-borderless datatable">
@@ -54,22 +54,27 @@
                                             <th>No.</th>
                                             <th>Nama</th>
                                             <th>Deskripsi</th>
-                                            <th>Lokasi</th>
-                                            <th>Jumlah</th>
+                                            <th>Gambar</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($facilities as $facility)
+                                        @foreach ($laboratories as $laboratory)
                                             <tr>
                                                 <td>{{ $loop->iteration }}.</td>
-                                                <td>{{ $facility->name }}</td>
-                                                <td>{{ $facility->description }}</td>
-                                                <td>{{ $facility->laboratory->name ?? 'Tidak ada' }}</td>
-                                                <td>{{ $facility->quantity }}</td>
+                                                <td>Lab. {{ $laboratory->name }}</td>
+                                                <td>{{ $laboratory->description }}</td>
+                                                <td>
+                                                    @if ($laboratory->image)
+                                                        <img src="{{ Storage::url($laboratory->image) }}" alt="Image"
+                                                            width="50">
+                                                    @else
+                                                        No Image
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     <!-- Edit Badge -->
-                                                    <a href="{{ route('admin.facilities.edit', $facility) }}"
+                                                    <a href="{{ route('admin.laboratories.edit', $laboratory->id) }}"
                                                         class="badge bg-warning text-dark">
                                                         <i class="bi bi-pencil-square"></i> Edit
                                                     </a>
@@ -77,12 +82,12 @@
                                                     <!-- Hapus Badge -->
                                                     <button type="button" class="badge bg-danger text-white border-0"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#deleteModal{{ $facility->id }}">
+                                                        data-bs-target="#deleteModal{{ $laboratory->id }}">
                                                         <i class="bi bi-trash"></i> Hapus
                                                     </button>
 
                                                     <!-- Modal Konfirmasi Hapus -->
-                                                    <div class="modal fade" id="deleteModal{{ $facility->id }}"
+                                                    <div class="modal fade" id="deleteModal{{ $laboratory->id }}"
                                                         tabindex="-1" aria-labelledby="deleteModalLabel"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog">
@@ -102,7 +107,7 @@
                                                                         data-bs-dismiss="modal">Batal</button>
                                                                     <!-- Form Hapus -->
                                                                     <form
-                                                                        action="{{ route('admin.facilities.destroy', $facility->id) }}"
+                                                                        action="{{ route('admin.laboratories.destroy', $laboratory->id) }}"
                                                                         method="POST" style="display:inline-block;">
                                                                         @csrf
                                                                         @method('DELETE')

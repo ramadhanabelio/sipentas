@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Facility;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Laboratory;
 
 class FacilityController extends Controller
 {
@@ -16,7 +17,8 @@ class FacilityController extends Controller
 
     public function create()
     {
-        return view('admin.facilities.create');
+        $laboratories = Laboratory::all();
+        return view('admin.facilities.create', compact('laboratories'));
     }
 
     public function store(Request $request)
@@ -24,7 +26,7 @@ class FacilityController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
-            'location' => 'nullable|string',
+            'id_laboratory' => 'nullable|exists:laboratories,id',
             'quantity' => 'required|integer|min:1',
         ]);
 
@@ -35,7 +37,8 @@ class FacilityController extends Controller
 
     public function edit(Facility $facility)
     {
-        return view('admin.facilities.edit', compact('facility'));
+        $laboratories = Laboratory::all();
+        return view('admin.facilities.edit', compact('facility', 'laboratories'));
     }
 
     public function update(Request $request, Facility $facility)

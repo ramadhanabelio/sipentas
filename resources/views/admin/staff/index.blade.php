@@ -1,16 +1,16 @@
 @extends('layouts.admin')
 
-@section('title', 'Manajemen Fasilitas')
+@section('title', 'Manajemen Staff Jurusan')
 
 @section('content')
     <div class="pagetitle">
-        <h1>Manajemen Fasilitas</h1>
+        <h1>Manajemen Staff Jurusan</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="{{ route('admin.dashboard') }}">Home</a>
                 </li>
-                <li class="breadcrumb-item active">Manajemen Fasilitas</li>
+                <li class="breadcrumb-item active">Manajemen Staff Jurusan</li>
             </ol>
         </nav>
     </div>
@@ -29,47 +29,42 @@
                                     <li class="dropdown-header text-start">
                                         <h6>Action</h6>
                                     </li>
-
                                     <li>
-                                        <a class="dropdown-item" href="{{ route('admin.facilities.create') }}">+ Tambah Data
-                                            Fasilitas</a>
+                                        <a class="dropdown-item" href="{{ route('admin.staff.create') }}">+ Tambah Data
+                                            Staff Jurusan</a>
                                     </li>
-                                    {{-- <li>
-                                        <a class="dropdown-item" href="#">Print PDF</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">Print Excel</a>
-                                    </li> --}}
                                 </ul>
                             </div>
 
                             <div class="card-body">
                                 <h5 class="card-title">
-                                    Manajemen Fasilitas
+                                    Manajemen Staff Jurusan
                                 </h5>
+
+                                @if (session('success'))
+                                    <div class="alert alert-success">{{ session('success') }}</div>
+                                @endif
 
                                 <table class="table table-borderless datatable">
                                     <thead>
                                         <tr>
                                             <th>No.</th>
+                                            <th>NIP/NIK</th>
                                             <th>Nama</th>
-                                            <th>Deskripsi</th>
-                                            <th>Lokasi</th>
-                                            <th>Jumlah</th>
+                                            <th>Jabatan</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($facilities as $facility)
+                                        @foreach ($staffs as $staff)
                                             <tr>
                                                 <td>{{ $loop->iteration }}.</td>
-                                                <td>{{ $facility->name }}</td>
-                                                <td>{{ $facility->description }}</td>
-                                                <td>{{ $facility->laboratory->name ?? 'Tidak ada' }}</td>
-                                                <td>{{ $facility->quantity }}</td>
+                                                <td>{{ $staff->nip_nik }}</td>
+                                                <td>{{ $staff->name }}</td>
+                                                <td>{{ $staff->position }}</td>
                                                 <td>
                                                     <!-- Edit Badge -->
-                                                    <a href="{{ route('admin.facilities.edit', $facility) }}"
+                                                    <a href="{{ route('admin.staff.edit', $staff->id) }}"
                                                         class="badge bg-warning text-dark">
                                                         <i class="bi bi-pencil-square"></i> Edit
                                                     </a>
@@ -77,12 +72,12 @@
                                                     <!-- Hapus Badge -->
                                                     <button type="button" class="badge bg-danger text-white border-0"
                                                         data-bs-toggle="modal"
-                                                        data-bs-target="#deleteModal{{ $facility->id }}">
+                                                        data-bs-target="#deleteModal{{ $staff->id }}">
                                                         <i class="bi bi-trash"></i> Hapus
                                                     </button>
 
                                                     <!-- Modal Konfirmasi Hapus -->
-                                                    <div class="modal fade" id="deleteModal{{ $facility->id }}"
+                                                    <div class="modal fade" id="deleteModal{{ $staff->id }}"
                                                         tabindex="-1" aria-labelledby="deleteModalLabel"
                                                         aria-hidden="true">
                                                         <div class="modal-dialog">
@@ -97,12 +92,12 @@
                                                                     Apakah Anda yakin ingin menghapus data ini?
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <!-- Tombol Cancel -->
+                                                                    <!-- Cancel Button -->
                                                                     <button type="button" class="btn btn-secondary"
                                                                         data-bs-dismiss="modal">Batal</button>
-                                                                    <!-- Form Hapus -->
+                                                                    <!-- Delete Form -->
                                                                     <form
-                                                                        action="{{ route('admin.facilities.destroy', $facility->id) }}"
+                                                                        action="{{ route('admin.staff.destroy', $staff->id) }}"
                                                                         method="POST" style="display:inline-block;">
                                                                         @csrf
                                                                         @method('DELETE')

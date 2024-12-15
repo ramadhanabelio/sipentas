@@ -5,19 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Facility extends Model
+class Laboratory extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'name',
         'description',
-        'id_laboratory',
-        'quantity',
+        'image',
+        'id_facilities',
     ];
 
-    public function laboratory()
+    public function getImageUrlAttribute()
     {
-        return $this->belongsTo(Laboratory::class, 'id_laboratory');
+        return $this->image ? asset('storage/' . $this->image) : null;
     }
 }
