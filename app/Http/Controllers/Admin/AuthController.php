@@ -17,11 +17,17 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
+        $admin = \App\Models\Admin::where('email', $request->email)->first();
+
+        if (!$admin) {
+            return back()->withErrors(['email' => 'Email salah.'])->withInput();
+        }
+
         if (Auth::guard('admin')->attempt($credentials)) {
             return redirect()->route('admin.dashboard');
         }
 
-        return back()->withErrors(['error' => 'Invalid credentials.']);
+        return back()->withErrors(['password' => 'Password salah.'])->withInput();
     }
 
     public function logout()
