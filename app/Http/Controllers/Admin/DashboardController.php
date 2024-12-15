@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\Facility;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard');
+        $totalFacilities = Facility::count();
+        $totalUsers = User::count();
+
+        return view('admin.dashboard', compact('totalFacilities', 'totalUsers'));
     }
 }
