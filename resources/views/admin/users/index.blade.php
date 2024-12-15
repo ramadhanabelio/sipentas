@@ -36,8 +36,9 @@
                                     <thead>
                                         <tr>
                                             <th>No.</th>
+                                            <th>NIM</th>
                                             <th>Nama</th>
-                                            <th>Email</th>
+                                            <th>Semester</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
@@ -45,8 +46,9 @@
                                         @foreach ($students as $student)
                                             <tr>
                                                 <td>{{ $loop->iteration }}.</td>
+                                                <td>{{ $student->nim }}</td>
                                                 <td>{{ $student->name }}</td>
-                                                <td>{{ $student->email }}</td>
+                                                <td>{{ $student->semester }}</td>
                                                 <td>
                                                     <!-- Edit Badge -->
                                                     <a href="{{ route('admin.users.edit', $student) }}"

@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
-class LecturerController extends Controller
+class LecturerManagementController extends Controller
 {
     public function index()
     {

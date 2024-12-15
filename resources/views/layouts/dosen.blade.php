@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Admin SIPENTAS - Teknik Informatika :: Politeknik Negeri Bengkalis</title>
+    <title>Dosen SIPENTAS - Teknik Informatika :: Politeknik Negeri Bengkalis</title>
     <meta content="" name="description" />
     <meta content="" name="keywords" />
     <!-- Favicons -->
@@ -87,13 +87,13 @@
                         data-bs-toggle="dropdown">
                         <img src="{{ asset('assets/img/logo.png') }}" alt="Profile" class="rounded-circle" />
                         <span
-                            class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::guard('admin')->user()->name }}</span>
+                            class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::guard('lecturer')->user()->name }}</span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>{{ Auth::guard('admin')->user()->name }}</h6>
-                            <span>{{ Auth::guard('admin')->user()->email }}</span>
+                            <h6>{{ Auth::guard('lecturer')->user()->name }}</h6>
+                            <span>{{ Auth::guard('lecturer')->user()->nip_nik }}</span>
                         </li>
                         <li>
                             <hr class="dropdown-divider" />
@@ -110,7 +110,7 @@
                         </li>
 
                         <li>
-                            <form action="{{ route('admin.logout') }}" method="POST" style="display: inline;">
+                            <form action="{{ route('dosen.logout') }}" method="POST" style="display: inline;">
                                 @csrf
                                 <button type="submit"
                                     style="background: none; border: none; padding: 0; cursor: pointer;">
@@ -136,7 +136,7 @@
         <ul class="sidebar-nav" id="sidebar-nav">
             <!-- Dashboard -->
             <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('admin.dashboard') ? '' : 'collapsed' }}"
+                <a class="nav-link {{ request()->routeIs('dosen.dashboard') ? '' : 'collapsed' }}"
                     href="{{ route('admin.dashboard') }}">
                     <i class="bi bi-house-fill"></i>
                     <span>Dashboard</span>
@@ -147,26 +147,8 @@
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('admin.laboratories.index') ? '' : 'collapsed' }}"
                     href="{{ route('admin.laboratories.index') }}">
-                    <i class="bi bi-grid-fill"></i>
-                    <span>Manajemen Laboratorium</span>
-                </a>
-            </li>
-
-            <!-- Manage Facilities -->
-            <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('admin.facilities.index') ? '' : 'collapsed' }}"
-                    href="{{ route('admin.facilities.index') }}">
-                    <i class="bi bi-gear-fill"></i>
-                    <span>Manajemen Fasilitas</span>
-                </a>
-            </li>
-
-            <!-- Manage Users -->
-            <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('admin.users.index') ? '' : 'collapsed' }}"
-                    href="{{ route('admin.users.index') }}">
-                    <i class="bi bi-people-fill"></i>
-                    <span>Manajemen Pengguna</span>
+                    <i class="bi bi-clock-fill"></i>
+                    <span>Manajemen Peminjaman</span>
                 </a>
             </li>
 
@@ -177,26 +159,8 @@
             <li class="nav-item">
                 <a class="nav-link {{ request()->routeIs('admin.lecturers.index') ? '' : 'collapsed' }}"
                     href="{{ route('admin.lecturers.index') }}">
-                    <i class="bi bi-person-fill-lock"></i>
-                    <span>Dosen</span>
-                </a>
-            </li>
-
-            <!-- Laboran -->
-            <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('admin.staff.index') ? '' : 'collapsed' }}"
-                    href="{{ route('admin.staff.index') }}">
-                    <i class="bi bi-person-fill-gear"></i>
-                    <span>Staff Jurusan</span>
-                </a>
-            </li>
-
-            <!-- Program Studi -->
-            <li class="nav-item">
-                <a class="nav-link {{ request()->routeIs('admin.prodi.index') ? '' : 'collapsed' }}"
-                    href="{{ route('admin.prodi.index') }}">
-                    <i class="bi bi-grid-1x2-fill"></i>
-                    <span>Program Studi</span>
+                    <i class="bi bi-file-earmark-text-fill"></i>
+                    <span>Laporan</span>
                 </a>
             </li>
         </ul>
